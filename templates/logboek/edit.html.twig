@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Logboek{% endblock %}
+
+{% block body %}
+    <h1>Edit Logboek</h1>
+
+    {{ include('logboek/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('logboek_index') }}">back to list</a>
+
+    {{ include('logboek/_delete_form.html.twig') }}
+{% endblock %}

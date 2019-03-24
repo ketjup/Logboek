@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logboek index{% endblock %}
+
+{% block body %}
+    <h1>Logboek index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Begeleidingsbrief</th>
+                <th>Datum</th>
+                <th>Aantalm3</th>
+                <th>Laadlocatie</th>
+                <th>Tijdvertrek</th>
+                <th>Bestemming</th>
+                <th>Evenement</th>
+                <th>User_id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for logboek in logboeks %}
+            <tr>
+                <td>{{ logboek.id }}</td>
+                <td>{{ logboek.begeleidingsbrief }}</td>
+                <td>{{ logboek.datum ? logboek.datum|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ logboek.aantalm3 }}</td>
+                <td>{{ logboek.laadlocatie }}</td>
+                <td>{{ logboek.tijdvertrek ? logboek.tijdvertrek|date('H:i:s') : '' }}</td>
+                <td>{{ logboek.bestemming }}</td>
+                <td>{{ logboek.evenement }}</td>
+                <td>{{ logboek.userId }}</td>
+                <td>
+                    <a href="{{ path('logboek_show', {'id': logboek.id}) }}">show</a>
+                    <a href="{{ path('logboek_edit', {'id': logboek.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('logboek_new') }}">Create new</a>
+{% endblock %}

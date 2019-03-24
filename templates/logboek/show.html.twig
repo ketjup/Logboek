@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logboek{% endblock %}
+
+{% block body %}
+    <h1>Logboek</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ logboek.id }}</td>
+            </tr>
+            <tr>
+                <th>Begeleidingsbrief</th>
+                <td>{{ logboek.begeleidingsbrief }}</td>
+            </tr>
+            <tr>
+                <th>Datum</th>
+                <td>{{ logboek.datum ? logboek.datum|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Aantalm3</th>
+                <td>{{ logboek.aantalm3 }}</td>
+            </tr>
+            <tr>
+                <th>Laadlocatie</th>
+                <td>{{ logboek.laadlocatie }}</td>
+            </tr>
+            <tr>
+                <th>Tijdvertrek</th>
+                <td>{{ logboek.tijdvertrek ? logboek.tijdvertrek|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Bestemming</th>
+                <td>{{ logboek.bestemming }}</td>
+            </tr>
+            <tr>
+                <th>Evenement</th>
+                <td>{{ logboek.evenement }}</td>
+            </tr>
+            <tr>
+                <th>User_id</th>
+                <td>{{ logboek.userId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('logboek_index') }}">back to list</a>
+
+    <a href="{{ path('logboek_edit', {'id': logboek.id}) }}">edit</a>
+
+    {{ include('logboek/_delete_form.html.twig') }}
+{% endblock %}
